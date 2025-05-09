@@ -1,6 +1,7 @@
 <?php
 
 
-echo "Preparing.";
+echo "Preparing."; //its really fantastic
+
 
 ?>
