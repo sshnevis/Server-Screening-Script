@@ -1,5 +1,10 @@
 <?php
 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
+
 $remote_url = "https://raw.githubusercontent.com/sshnevis/Server-Screening-Script/refs/heads/master/screening.php";
 $local_file = "screening.php";
 
@@ -15,19 +20,25 @@ try {
 
     $code = curl_exec($ch);
     $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    if ($code === false) {
+        $error_msg = curl_error($ch);
+        curl_close($ch);
+        throw new Exception("cURL error: $error_msg");
+    }
+
     curl_close($ch);
 
-    if ($code === false || $http_status !== 200) {
-        throw new Exception("Download failed");
+    if ($http_status !== 200) {
+        throw new Exception("HTTP error: status code $http_status");
     }
 
     if (file_put_contents($local_file, $code) === false) {
-        throw new Exception("Write failed");
+        throw new Exception("Failed to write to file: $local_file");
     }
 
     echo "Update successful";
 
 } catch (Exception $e) {
-    echo "Update failed";
+    echo "Update failed: " . $e->getMessage();
 }
-?>
