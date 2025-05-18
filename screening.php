@@ -160,7 +160,7 @@ echo "Free: " . formatBytes($memAvailable * 1024) . "<br>";
 echo "Used Percent: " . round(($memUsed / $memTotal) * 100, 2) . "%<br>";
 
 echo "<br>=== Disk Usage ===<br>";
-echo "<br><strong>/root Directory:</strong><br>";
+echo "<br><strong> / Directory:</strong><br>";
 $diskTotal = disk_total_space("/");
 $diskFree = disk_free_space("/");
 $diskUsed = $diskTotal - $diskFree;
@@ -168,7 +168,7 @@ echo "Total: " . formatBytes($diskTotal) . "<br>";
 echo "Used: " . formatBytes($diskUsed) . "<br>";
 echo "Free: " . formatBytes($diskFree) . "<br>";
 
-echo "<br><strong>/home Directory:</strong><br>";
+echo "<br><strong> home Directory:</strong><br>";
 $homeTotal = disk_total_space($linuxhome);
 $homeFree = disk_free_space($linuxhome);
 $homeUsed = $homeTotal - $homeFree;
@@ -176,7 +176,7 @@ echo "Total: " . formatBytes($homeTotal) . "<br>";
 echo "Used: " . formatBytes($homeUsed) . "<br>";
 echo "Free: " . formatBytes($homeFree) . "<br>";
 
-echo "<br><strong>/tmp Directory:</strong><br>";
+echo "<br><strong> tmp Directory:</strong><br>";
 $tmpTotal = disk_total_space("/tmp/");
 $tmpFree = disk_free_space("/tmp/");
 $tmpUsed = $tmpTotal - $tmpFree;
