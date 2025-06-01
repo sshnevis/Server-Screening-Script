@@ -193,6 +193,17 @@ $rootDisk = $monitor->getDiskInfo("/");
 $homeDisk = $monitor->getDiskInfo("/home");
 $tmpDisk = $monitor->getDiskInfo("/tmp");
 $issues = $monitor->getIssues();
+
+echo "<pre>";
+if (empty($issues)) {
+    echo "All is Normal\n";
+} else {
+    echo "Warning:\n";
+    foreach ($issues as $issue) {
+        echo "- $issue\n";
+    }
+}
+echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -507,4 +518,4 @@ $issues = $monitor->getIssues();
        &copy; <?php echo date('Y'); ?> TalashNet Screening
     </footer>
 </body>
-</html> 
+</html>
